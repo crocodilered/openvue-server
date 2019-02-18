@@ -1,0 +1,31 @@
+[global]
+server.socket_host: '127.0.0.1'
+server.socket_port: 8089
+engine.autoreload.on: False
+
+[/]
+tools.gzip.on = True
+tools.encode.on = False
+tools.caching.on = False
+
+tools.response_headers.on: True
+tools.response_headers.headers: [
+		('Access-Control-Allow-Origin', '*'),
+		('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'),
+		('Access-Control-Allow-Methods', '*'),
+		('Access-Control-Max-Age', '1728000')
+	]
+
+[Database]
+mysql.host = 'localhost'
+mysql.port = 3306
+mysql.user = ''*******'
+mysql.password = '*******'
+mysql.database = 'openvue'
+
+[Purgatory]
+purgatory.upload_dir = 'uploads'
+purgatory.import_dir = 'folders'
+
+[Wiki]
+wiki.url = 'http://ru1.openlist.wiki/'

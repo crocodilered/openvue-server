@@ -1,0 +1,4 @@
+CherryPy
+bcrypt
+requests
+mysql-connector-python

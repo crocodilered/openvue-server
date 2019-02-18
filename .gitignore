@@ -1,0 +1,6 @@
+/conf/server.conf
+.idea
+/venv/
+/uploads/
+/folders/
+__pycache__
