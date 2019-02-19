@@ -17,11 +17,12 @@ class UserModel:
             self.password = password
             self.enabled = enabled
             self.token = token
-            self._display_name = None
+            self._display_name = None  # TODO: Use DB field 'user.name' instead.
         else:
             raise UserInvalidDataException
 
-    def to_dict(self):
+    @property
+    def json(self):
         """ Make it JSON serializable """
         return {
             'id': int(self.id),
