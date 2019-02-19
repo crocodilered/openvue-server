@@ -1,10 +1,10 @@
 """
 Represents user's data
 """
-__all__ = ['User', 'UserInvalidDataException']
+__all__ = ['UserModel', 'UserInvalidDataException']
 
 
-class User:
+class UserModel:
 
     ROLE_ADMIN = 1
     ROLE_USER = 2
@@ -35,6 +35,7 @@ class User:
         if not self._display_name:
             self._display_name = self.email.split('@')[0]
         return self._display_name
+
 
 class UserInvalidDataException (Exception):
     pass

@@ -1,7 +1,7 @@
 import cherrypy as cp
 from libs.controllers.abstract import AbstractController
 from libs.models.folder import FolderModel
-from libs.models.user import User
+from libs.models.user import UserModel
 from libs.providers.folder import FolderProvider
 
 
@@ -27,7 +27,7 @@ class FolderController(AbstractController):
         }
         # Return purgatory data if user is admin.
         user = cp.tools.auth.get_user()
-        if user.role == User.ROLE_ADMIN:
+        if user.role == UserModel.ROLE_ADMIN:
             data['countPurgatory'] = FolderProvider.count_purgatory(self.purgatory_conf)
 
         return data
