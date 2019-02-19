@@ -1,4 +1,4 @@
-from libs.models.user import User
+from libs.models.usermodel import UserModel
 
 
 class UserProvider:
@@ -12,5 +12,5 @@ class UserProvider:
             cur.execute(sql)
             row = cur.fetchone()
             if row:
-                r = User(row[0], row[1], row[2], row[3], row[3])
+                r = UserModel(row[0], row[1], row[2], row[3], row[3])
         return r
