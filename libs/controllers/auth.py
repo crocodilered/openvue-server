@@ -21,7 +21,7 @@ class AuthController(AbstractController):
         r = {'errorCode': self.ERROR_SESSION_NOT_FOUND}
         user = cp.tools.auth.get_user()
         if user:
-            r['user'] = user.to_dict()
+            r['user'] = user.json
             r['errorCode'] = 0
         return r
 
@@ -39,7 +39,7 @@ class AuthController(AbstractController):
                 token, user = cp.tools.auth.sign_in(email, password)
                 if token and user:
                     r['token'] = token
-                    r['user'] = user.to_dict()
+                    r['user'] = user.json
                     r['errorCode'] = 0
                 else:
                     r['errorCode'] = self.ERROR_WRONG_CREDENTIALS
