@@ -1,6 +1,7 @@
 import cherrypy as cp
 from libs.controllers.abstract import AbstractController
 from libs.models.folder import FolderModel
+from libs.models.user import User
 from libs.providers.folder import FolderProvider
 
 
@@ -19,12 +20,17 @@ class FolderController(AbstractController):
     @AbstractController.req_method_post
     def index(self):
         """ Return general info """
-        return {
+        data = {
             'errorCode': 0,
             'count': FolderProvider.count(cp.request.db),
-            'countAvailable': FolderProvider.count_available(cp.request.db),
-            'countPurgatory': FolderProvider.count_purgatory(self.purgatory_conf)
+            'countAvailable': FolderProvider.count_available(cp.request.db)
         }
+        # Return purgatory data if user is admin.
+        user = cp.tools.auth.get_user()
+        if user.role == User.ROLE_ADMIN:
+            data['countPurgatory'] = FolderProvider.count_purgatory(self.purgatory_conf)
+
+        return data
 
     @cp.expose
     @cp.tools.json_in()
