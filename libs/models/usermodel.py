@@ -21,12 +21,13 @@ class UserModel:
         else:
             raise UserInvalidDataException
 
-    @property
-    def json(self):
+    def to_dict(self):
+        """ Make it JSON serializable """
         return {
             'id': int(self.id),
             'role': int(self.role),
-            'email': self.email
+            'email': self.email,
+            'displayName': self.display_name
         }
 
     @property
@@ -34,7 +35,6 @@ class UserModel:
         if not self._display_name:
             self._display_name = self.email.split('@')[0]
         return self._display_name
-
 
 class UserInvalidDataException (Exception):
     pass
