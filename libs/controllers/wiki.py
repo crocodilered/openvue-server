@@ -118,7 +118,7 @@ class WikiController(AbstractController):
         data = resp.json()
 
         if 'edit' in data and 'title' in data['edit']:
-            formular = FormularModel(None, folder_id, page_title, FormularModel.STATUS_PERFORMING)
+            formular = FormularModel(None, folder_id, page_title)
             FormularProvider.create(cp.request.db, formular)
             return {
                 'page_title': data['edit']['title']
